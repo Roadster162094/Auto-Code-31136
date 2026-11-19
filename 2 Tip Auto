@@ -1,0 +1,73 @@
+import static com.pedropathing.api.Paths.*;
+import com.pedropathing.api.Paths;
+
+import com.pedropathing.api.PoseFactory;
+import com.pedropathing.math.Pose;
+import com.pedropathing.paths.Path;
+
+public class Paths {
+
+    private final PoseFactory poseFactory = PoseFactory.degrees();
+
+    private final Pose start = poseFactory.of(56.2532, 7.7468, 90);
+    private final Pose start_2 = poseFactory.of(56.2532, 7.7468, 90);
+    private final Pose gottoPollenStart = poseFactory.of(56.2532, 7.7468, 90);
+    private final Pose gottoPollen = poseFactory.of(19.7499, 45.89, 0);
+    private final Pose grabPollenStart = poseFactory.of(19.7499, 45.89, 0);
+    private final Pose grabPollen = poseFactory.of(14.0389, 45.89, 0);
+    private final Pose backupStart = poseFactory.of(14.0389, 45.89, 0);
+    private final Pose backup = poseFactory.of(19.75, 45.89, 0);
+    private final Pose positionShootStart = poseFactory.of(19.75, 45.89, 0);
+    private final Pose positionShoot = poseFactory.of(47.5564, 122.9886, 285);
+    private final Pose positionShootControl1 = poseFactory.of(26.4039, 99.8434, 0);
+    private final Pose morePollenStart = poseFactory.of(47.5564, 122.9886, 285);
+    private final Pose morePollen = poseFactory.of(46.739, 125.0508, 270);
+    private final Pose grab2ndPollenStart = poseFactory.of(46.739, 125.0508, 270);
+    private final Pose grab2ndPollen = poseFactory.of(46.8214, 129.1287, 270);
+    private final Pose aimStart = poseFactory.of(46.8214, 129.1287, 270);
+    private final Pose aim = poseFactory.of(46.8732, 123.1122, 285);
+    private final Pose shoot = poseFactory.of(46.87, 123.11, 285);
+    private final Pose parkStart = poseFactory.of(46.87, 123.11, 270);
+    private final Pose park = poseFactory.of(11.0749, 94.8592, 270);
+    private final Pose parkControl1 = poseFactory.of(46.4932, 94.3527, 0);
+
+    public Path start() {
+        return Paths.line(start, start_2).linear(start, start_2);
+    }
+
+    public Path gottoPollen() {
+        return Paths.line(gottoPollenStart, gottoPollen).linear(gottoPollenStart, gottoPollen);
+    }
+
+    public Path grabPollen() {
+        return Paths.line(grabPollenStart, grabPollen).linear(grabPollenStart, grabPollen);
+    }
+
+    public Path backup() {
+        return Paths.line(backupStart, backup).linear(backupStart, backup);
+    }
+
+    public Path positionShoot() {
+        return Paths.curve(positionShootStart, positionShootControl1, positionShoot).linear(positionShootStart, positionShoot);
+    }
+
+    public Path morePollen() {
+        return Paths.line(morePollenStart, morePollen).linear(morePollenStart, morePollen);
+    }
+
+    public Path grab2ndPollen() {
+        return Paths.line(grab2ndPollenStart, grab2ndPollen).linear(grab2ndPollenStart, grab2ndPollen);
+    }
+
+    public Path aim() {
+        return Paths.line(aimStart, aim).linear(aimStart, aim);
+    }
+
+    public Path shoot() {
+        return Paths.line(aim, shoot).constant(shoot);
+    }
+
+    public Path park() {
+        return Paths.curve(parkStart, parkControl1, park).linear(parkStart, park);
+    }
+}
