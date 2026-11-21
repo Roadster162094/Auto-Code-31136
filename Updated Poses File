@@ -1,0 +1,90 @@
+package org.firstinspires.ftc.teamcode.autos;
+
+import com.pedropathing.api.Paths;
+import com.pedropathing.api.PoseFactory;
+import com.pedropathing.math.Pose;
+import com.pedropathing.paths.Path;
+
+public class poses {
+    public poses(){
+    }
+
+    private final PoseFactory poseFactory = PoseFactory.degrees();
+    /*
+    public final Pose startFacingHive = poseFactory.of(56, 8, 90);
+    private final Pose byFlower = poseFactory.of(17.3495, 49.5386, 180);
+    private final Pose controlPoint1 = poseFactory.of(20.43, 103.92, 0);
+    private final Pose shootPosition = poseFactory.of(40, 60, 0);
+    private final Pose hive = poseFactory.of(58.17, 81.59, 90);
+
+    public Path path1() {
+        return Paths.line(startFacingHive, byFlower).linear(startFacingHive, byFlower);
+    }
+
+    public Path path2() {
+        return Paths.curve(byFlower, controlPoint1, shootPosition).facingPoint(hive);
+    }
+    */
+
+    public final Pose startFacingHive = poseFactory.of(56.2532, 7.7468, 90);
+    private final Pose start_2 = poseFactory.of(56.2532, 7.7468, 90);
+    private final Pose goToPollenStart = poseFactory.of(56.2532, 7.7468, 90);
+    private final Pose goToPollen = poseFactory.of(19.7499, 45.89, 0);
+    private final Pose grabPollenStart = poseFactory.of(19.7499, 45.89, 0);
+    private final Pose grabPollen = poseFactory.of(14.0389, 45.89, 0);
+    private final Pose backupStart = poseFactory.of(14.0389, 45.89, 0);
+    private final Pose backup = poseFactory.of(19.75, 45.89, 0);
+    private final Pose positionShootStart = poseFactory.of(19.75, 45.89, 0);
+    private final Pose positionShoot = poseFactory.of(47.5564, 122.9886, 285);
+    private final Pose positionShootControl1 = poseFactory.of(26.4039, 99.8434, 0);
+    private final Pose morePollenStart = poseFactory.of(47.5564, 122.9886, 285);
+    private final Pose morePollen = poseFactory.of(46.739, 125.0508, 270);
+    private final Pose grab2ndPollenStart = poseFactory.of(46.739, 125.0508, 270);
+    private final Pose grab2ndPollen = poseFactory.of(46.8214, 129.1287, 270);
+    private final Pose aimStart = poseFactory.of(46.8214, 129.1287, 270);
+    private final Pose aim = poseFactory.of(46.8732, 123.1122, 285);
+    private final Pose shootIN = poseFactory.of(46.87, 123.11, 285);
+    private final Pose moveStart = poseFactory.of(46.87, 123.11, 270);
+    private final Pose move = poseFactory.of(4.6172, 98.0248, 90);
+    private final Pose moveControl1 = poseFactory.of(30.5888, 85.202, 0);
+
+    public Path start() {
+        return Paths.line(startFacingHive, start_2).linear(startFacingHive, start_2);
+    }
+
+    public Path goToPollen() {
+        return Paths.line(goToPollenStart, goToPollen).linear(goToPollenStart, goToPollen);
+    }
+
+    public Path grabPollen() {
+        return Paths.line(grabPollenStart, grabPollen).linear(grabPollenStart, grabPollen);
+    }
+
+    public Path backup() {
+        return Paths.line(backupStart, backup).linear(backupStart, backup);
+    }
+
+    public Path positionShoot() {
+        return Paths.curve(positionShootStart, positionShootControl1, positionShoot).linear(positionShootStart, positionShoot);
+    }
+
+    public Path morePollen() {
+        return Paths.line(morePollenStart, morePollen).linear(morePollenStart, morePollen);
+    }
+
+    public Path grab2ndPollen() {
+        return Paths.line(grab2ndPollenStart, grab2ndPollen).linear(grab2ndPollenStart, grab2ndPollen);
+    }
+
+    public Path aim() {
+        return Paths.line(aimStart, aim).linear(aimStart, aim);
+    }
+
+    public Path shootIN() {
+        return Paths.line(aim, shootIN).constant(shootIN);
+    }
+
+    public Path move() {
+        return Paths.curve(moveStart, moveControl1, move).linear(moveStart, move);
+    }
+}
