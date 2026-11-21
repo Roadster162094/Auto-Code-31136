@@ -1,0 +1,48 @@
+package org.firstinspires.ftc.teamcode.autos;
+
+import static com.pedropathing.ivy.groups.Groups.sequential;
+import static com.pedropathing.ivy.pedro.PedroCommands.follow;
+
+import com.pedropathing.follower.Follower;
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.OpMode;
+
+import org.firstinspires.ftc.teamcode.pedro.Constants;
+
+@Autonomous(name = "SampleAuto")
+public class SampleAuto extends OpMode {
+
+    private Follower follower = null;
+    private final poses paths = new poses();
+
+    public SampleAuto(){
+
+    }
+    public void init(){
+        follower = Constants.create(hardwareMap);
+        follower.setPose(paths.startFacingHive);
+
+    }
+
+    public void start(){
+        follower.setPose(paths.startFacingHive);
+        sequential(
+                follow(follower, paths.start()),
+                follow(follower, paths.goToPollen()),
+                follow(follower, paths.grabPollen()),
+                follow(follower, paths.backup()),
+                follow(follower, paths.positionShoot()),
+                follow(follower, paths.morePollen()),
+                follow(follower, paths.grab2ndPollen()),
+                follow(follower, paths.aim()),
+                follow(follower, paths.shootIN()),
+                follow(follower, paths.move())
+        ).schedule();
+    }
+
+    public void loop(){
+        telemetry.addData("pose", follower.pose().toString());
+        follower.update();
+    }
+
+}
